@@ -5,4 +5,4 @@ venv
 #vscode settings
 .vscode
 
-
+__pycache__
