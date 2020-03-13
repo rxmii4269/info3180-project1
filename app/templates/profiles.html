@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+
+
+{% block main%}
+{% include "flash_messages.html"%}
+<ol>
+    {% for user in users %}
+    <div class="profile">
+        <img src="{{url_for('static',filename='uploads/' + user.profile_pic_id)}}" alt="" srcset="" width="100" height="150">
+        <h1>{{user.firstname}} {{user.lastname}}</h1>
+        <p>{{user.gender}}</p>
+        <p>{{user.location}}</p>
+        <button>View Profile</button>
+    </div>
+    {%endfor%}
+</ol>
+{% endblock%}
