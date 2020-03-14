@@ -1,5 +1,5 @@
-import datetime
 import os
+from datetime import datetime
 
 from flask import flash, redirect, render_template, request, url_for
 from werkzeug.utils import secure_filename
@@ -31,7 +31,8 @@ def profile():
         profile_pic = form.profile_pic.data
         filename = secure_filename(profile_pic.filename)
         profile_pic.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        user = User(firstname,lastname,gender,email,location,biography,filename)
+        created_on = datetime.today().strftime('%Y-%m-%d')
+        user = User(firstname,lastname,gender,email,location,biography,filename,created_on)
         db.session.add(user)
         db.session.commit()
         flash('Profile successfully added','success')
@@ -39,12 +40,13 @@ def profile():
     flash_errors(form)
     return render_template('profile.html',form=form)
 
-@app.route('/profile/<userid>')
+@app.route('/profile/<int:userid>')
 def uprofile(userid):
-    userid = User.query.get(userid)
-    curdate = format_date_joined('2018-03-12')
-    profile_pic = get_image(userid.profile_pic_id)
-    return render_template('userprofile.html' ,user=userid, curdate=curdate, profile_pic=profile_pic)
+    user = User.query.get(userid)
+    curdate = format_date_joined(user.created_on)
+    
+    profile_pic = get_image(user.profile_pic_id)
+    return render_template('userprofile.html' ,user=user, curdate=curdate, profile_pic=profile_pic)
 
 @app.route('/profiles')
 def profiles():
@@ -62,9 +64,7 @@ def flash_errors(form):
 
 
 def format_date_joined(date):
-    year,month,day = map(int,date.split('-'))
-    date_joined = datetime.date(year,month,day)
-    return ("Joined on " + date_joined.strftime("%B %d, %Y"))
+    return ("Joined on " + date.strftime("%B %d, %Y"))
 
 def get_image(filename):
     rootdir = os.getcwd()

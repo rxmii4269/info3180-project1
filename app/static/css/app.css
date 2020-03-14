@@ -2,4 +2,70 @@ body {
     padding-top: 5rem;
 }
 
+.green{
+    background-color: lawngreen;
+}
+
+.borderg{
+    border-top: 4px solid #007bff;
+}
+
+.padding{
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.padding-top{
+    padding-top: 50px;
+    padding-left: 13em;
+}
+
+.font{
+    font-size: 13pt;
+}
+
+.font-h1{
+    font-size: x-large;
+}
+
+.font-sm{
+    font-size: 10pt;
+    line-height: 0;
+}
+
+.font-sml{
+    font-size: 11pt;
+}
+
+.grey{
+    color:grey-400;
+}
+
+img{
+    border-radius: 5px;
+}
+
+.padding-bm{
+    padding-bottom: 20px;
+}
+
+.padding-top2{
+    padding-top: 30px;
+}
+
+.padding-left{
+    padding-left: 20px;
+}
+.padding-right{
+    padding-right: 20px;
+}
+
+.width{
+    width: 100px;
+}
+
+.center{
+    margin: auto;
+    width: 50%;
+}
 

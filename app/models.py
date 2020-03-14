@@ -12,11 +12,12 @@ class User(db.Model):
     gender = db.Column(db.String(6))
     email = db.Column(db.String(255),unique=True)
     location = db.Column(db.String(80))
-    biography = db.Column(db.String(255))
+    biography = db.Column(db.Text())
     profile_pic_id = db.Column(db.String(255))
+    created_on = db.Column(db.Date())
 
 
-    def __init__(self,firstname,lastname,gender,email,location,biography,profile_pic_id):
+    def __init__(self,firstname,lastname,gender,email,location,biography,profile_pic_id,created_on):
         self.firstname = firstname
         self.lastname = lastname
         self.gender = gender
@@ -24,6 +25,7 @@ class User(db.Model):
         self.location = location
         self.biography = biography
         self.profile_pic_id = profile_pic_id
+        self.created_on = created_on
 
 
 
