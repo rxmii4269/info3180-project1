@@ -1,4 +1,4 @@
-#! /usr/bin/evn python
+#! /usr/bin/env python
 
 from app import app 
 

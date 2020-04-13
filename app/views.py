@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 from app import app, db
 from app.forms import ProfileForm
 from app.models import User
-
+import sys
 
 @app.route('/')
 def home():
@@ -44,9 +44,9 @@ def profile():
 def uprofile(userid):
     user = User.query.get(userid)
     curdate = format_date_joined(user.created_on)
-    
     profile_pic = get_image(user.profile_pic_id)
     return render_template('userprofile.html' ,user=user, curdate=curdate, profile_pic=profile_pic)
+    
 
 @app.route('/profiles')
 def profiles():
